@@ -1,0 +1,271 @@
+/**
+ * CONTENTS
+ *
+ * Configuration
+ * # Colour variables .... The main colours used by the app
+ *
+ * Base styling
+ * # Normalize.css........ Keep styling consistent across different browsers
+ * # Box model............ Use `border-box` as the default
+ *
+ * Semantic classes
+ * # Table................ Prettified table
+ * # Form fields.......... Input boxes, buttons, toggle switch
+ * # Progress bar......... Animated element that shows how close to completion something is
+ *
+ * Utility classes
+ * # Text alignment....... Force text to align in particular directions
+ * # Visibility........... Force an element to be hidden
+ */
+
+/**
+ * -----------------------------------------------------------------------------------
+ * Configuration
+ * -----------------------------------------------------------------------------------
+ */
+:root {
+    --color-background: #fff;
+    --color-background-light: f9f9f9;
+    --color-background-dark: #eee;
+    --color-text: #222;
+
+    --color-action: hsl(214, 96%, 50%);
+    --color-action-light: hsl(214, 96%, 52%);
+    --color-action-dark: hsl(214, 96%, 48%);
+    --color-action-text: #fff;
+
+}
+
+/* Dark theme based on starwars.com */
+.mode-dark {
+    --color-background: #0a0b0b;
+    --color-background-light: #202020;
+    --color-background-dark: #101010;
+    --color-text: #999;
+
+    --color-action: hsl(55, 100%, 50%);
+    --color-action-light: hsl(56, 100%, 64%);
+    --color-action-dark: hsl(55, 100%, 36%);
+    --color-action-text: #000;
+}
+
+
+/**
+ * -----------------------------------------------------------------------------------
+ * Base styling
+ * -----------------------------------------------------------------------------------
+ */
+/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
+html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}main{display:block}h1{font-size:2em;margin:.67em 0}hr{box-sizing:content-box;height:0;overflow:visible}pre{font-family:monospace,monospace;font-size:1em}a{background-color:transparent}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}img{border-style:none}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0}button,input{overflow:visible}button,select{text-transform:none}[type=button],[type=reset],[type=submit],button{-webkit-appearance:button}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:1px dotted ButtonText}fieldset{padding:.35em .75em .625em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}progress{vertical-align:baseline}textarea{overflow:auto}[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}details{display:block}summary{display:list-item}template{display:none}[hidden]{display:none}
+
+/* Box model */
+body {
+    box-sizing: border-box;
+}
+
+*, :before, :after {
+    box-sizing: inherit;
+}
+
+/* Basic element styles */
+body {
+    background-color: var(--color-background);
+    color: var(--color-text);
+    font-family: Helvetica, Arial, sans-serif;
+    padding: 1rem;
+}
+
+a:link {
+    color: var(--color-action);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--color-action-light);
+    text-decoration: underline;
+}
+
+a:active {
+    color: var(--color-action-dark);
+}
+
+a:visited {
+    color: rebeccapurple;
+}
+
+
+/**
+ * -----------------------------------------------------------------------------------
+ * Semantic classes
+ * Classes based on the the type of content that they style
+ * -----------------------------------------------------------------------------------
+ */
+.container {
+    max-width: 25rem;
+    width: 100%;
+}
+
+.table {
+    background-color: var(--color-background-light);
+    border-collapse: collapse;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.table td,
+.table th {
+    border: 1px solid #aaa;
+    padding: .25em;
+}
+
+.table th {
+    background-color: var(--color-background-dark);
+}
+
+.form-input {
+    border: 1px solid #aaa;
+    border-radius: .25rem;
+    display: inline-block;
+    font-size: .875rem;
+    line-height: 1.5;
+    padding: .375rem .75rem;
+}
+
+.button {
+    background-color: var(--color-action);
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    color: var(--color-action-text);
+    cursor: pointer;
+    display: inline-block;
+    font-size: .875rem;
+    font-weight: 400;
+    line-height: 1.5;
+    padding: .375rem .75rem;
+    text-align: center;
+    transition: background-color .15s ease-in-out;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+.button:hover {
+    background-color: var(--color-action-light);
+}
+
+.button:active {
+    background-color: var(--color-action-dark);
+}
+
+/* -- Toggle switch -- */
+/* Styles a checkbox into a switch */
+/* Hide the input, but allow it to be focusable */
+.toggle input {
+    clip: rect(1px, 1px, 1px, 1px);
+    clip-path: inset(50%);
+    opacity: 0;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    z-index: -1;
+}
+
+/* Element to show in place of the hidden checkbox */
+.toggle-helper {
+    background: #e5e5e5;
+    border-radius: .5em;
+    cursor: pointer;
+    display: inline-block;
+    height: 1em;
+    margin-left: .5em;
+    margin-right: .5em;
+    position: relative;
+    transition: background .28s;
+    vertical-align: middle;
+    width: 2.5em;
+}
+
+.toggle-helper:before {
+    content: '';
+    position: absolute;
+    top: -.25em;
+    left: -.25em;
+    width: 1.5em;
+    height: 1.5em;
+    background: #fafafa;
+    box-shadow: 0 2px 8px rgba(0, 0, 0,.28);
+    border-radius: 50%;
+    transition: left .28s, background .28s, box-shadow .28s;
+}
+
+/* Style differently when the checkbox is checked */
+:checked + .toggle-helper {
+    background: var(--color-action-light)
+}
+
+:checked +.toggle-helper:before {
+    background: var(--color-action);
+    left: 1.25em;
+}
+
+/* Outline to indicate when the field is focused (visual indicator for tab-key navigation) */
+:focus + .toggle-helper:after {
+    content: '';
+    border: 1px solid var(--color-action-light);
+    border-radius: 1em;
+    display: block;
+    opacity: .25;
+    position: absolute;
+    top: -.5em;
+    right: -.5em;
+    bottom: -.5em;
+    left: -.5em;
+}
+/** -- Toggle switch - end -- **/
+
+
+/* -- Progress bar. -- */
+.progress-bar {
+    background: var(--color-background-light);
+    border: 1px solid #aaa;
+    border-radius: 1em;
+    display: inline-block;
+    height: 1.75rem;
+    max-width: 25rem;
+    padding: .5em;
+    position: relative;
+    width: 100%;
+}
+
+/* The width of the inner span should be set inline. The bar will animate as the width is changed.  */
+.progress-bar > span {
+    background: var(--color-action-light);
+    border-radius: 1em;
+    display: block;
+    height: 100%;
+    transition: width .15s ease-in;
+    width: 0;
+}
+/* -- Progress bar. - end -- */
+
+
+
+
+/**
+ * -----------------------------------------------------------------------------------
+ * Utility classes
+ * Classes that directly describe the styles that they apply.
+ *
+ * !important is permitted for enforcing absolutes.
+ * -----------------------------------------------------------------------------------
+ */
+.text-center {
+    text-align: center !important;
+}
+
+.text-right {
+    text-align: right !important;
+}
+
+.hidden {
+    display: none !important;
+}

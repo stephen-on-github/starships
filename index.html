@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+        <title>Star Wars</title>
+        <link rel="stylesheet" href="css/styles.css" />
+    </head>
+
+    <body class="mode-dark">
+        <div class="container">
+            <!-- Theme switcher -->
+            <div class="mode-switcher text-center">
+                <label class="toggle">
+                    Light side
+                    <input type="checkbox" id="mode-switcher-dark" checked />
+                    <span class="toggle-helper"></span>
+                    Dark side
+                </label>
+            </div>
+
+            <!-- Section shown while data is being fetched from the API. -->
+            <div class="app-visibility-section text-center" id="app-loading">
+                <p>Fetching data from the API...</p>
+
+                <p id="app-loading-progress"></p>
+
+                <div class="progress-bar" id="app-loading-meter">
+                    <span></span>
+                </div>
+            </div>
+
+            <!-- Section shown if there was an error, fetching data from the API. -->
+            <div class="app-visibility-section text-center hidden" id="app-error">
+                <p id="app-error-message"></p>
+
+                <button type="button" class="button" id="app-error-retry">Try again</button>
+            </div>
+
+            <!-- Section shown when the data has been loaded and the app is ready to use. -->
+            <div class="app-visibility-section hidden" id="app">
+                <p>
+                    <label for="app-distance">Enter the distance in megalights (MGLT).</label>
+                </p>
+
+                <p>
+                    <input
+                        type="number" class="form-input" id="app-distance" placeholder="e.g. 1000000"
+                        min="0" step="1000000" />
+                    <button type="button" class="button" id="app-distance-calculate">Calculate</button>
+                </p>
+
+                <table class="table hidden" id="app-stops-table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Ship</th>
+                            <th scope="col">Stops required</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <script src="js/starship.js"></script>
+        <script src="js/app.js"></script>
+    </body>
+</html>
