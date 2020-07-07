@@ -37,7 +37,7 @@ class Starship
      * e.g. `const hours_per_day = 24` will not work in this context in Firefox 69.
      */
     // URL of the API used to retrieve data
-    static api_url() { return 'https://swapi.co/api/starships'; };
+    static api_url() { return 'https://swapi.dev/api/starships'; };
 
     // Error message when there are problem with the supplied distance, ship's MGLT or ship's consumables.
     static distance_error()    { return 'Invalid distance'; }
